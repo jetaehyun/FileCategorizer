@@ -7,8 +7,8 @@ def identifyExt(dest):
     for file in dest:
         if os.path.isfile(file) == False:
             continue
-        name, ext = os.path.splitext(file)
-        if ext in extensions:
+        ext = os.path.splitext(file)
+        if ext[1] in extensions:
             continue
         extensions.append(ext)
     return extensions
