@@ -1,4 +1,6 @@
-import os, sys
+import os
+from os import path
+from os import rename
 
 foldersToMake = []
 filesAndExt = {}
@@ -19,11 +21,13 @@ def identifyExt(dest, whatFiles):
 def populate_foldersToMake(ext):
     for ext1 in ext:
         foldersToMake.append(ext1[1:])                     # Ex. mp3
+    return None
 
 def populate_filesAndExt(files):
     for file in files:
         ext = os.path.splitext(file)
         filesAndExt[file] = ext[1][1:]                          # Ex. value = mp3, key = someMusicFile.mp3
+    return None
 
 def generateFolderDirectories(dest, ext):
     for extension in range(len(ext)):
@@ -32,18 +36,15 @@ def generateFolderDirectories(dest, ext):
         if os.path.exists(path) == True:
             continue
         os.mkdir(path)
+    return None
 
 def OrganizeFiles(addr, files):
-    os.chdir(addr)
     for file in files:
         orgFileAddr = os.path.join(addr, file)                  # Ex. /home/user/documents/someMusic.mp3
         whichFolder = filesAndExt[file]                         # Get extension of file
         path = os.path.join(addr, whichFolder + '_files', file) # Ex. /home/user/documents/mp3_files/someMusic.mp3
-        print(orgFileAddr)
-        print(path)
-        if os.path.isdir(path) == False: # only for testing
-            continue 
         os.rename(orgFileAddr, path)
+    return None
 
 def getOnlyFiles(dest):
     listFiles = os.listdir(dest)
@@ -64,8 +65,6 @@ def main():
     populate_foldersToMake(ext)                             # Populate list with unique ext
     generateFolderDirectories(dest, foldersToMake)              # Make new directories
     OrganizeFiles(dest, allFiles)
-
-
 
 if __name__ == '__main__':
     main()
