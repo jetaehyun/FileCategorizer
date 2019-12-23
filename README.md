@@ -5,5 +5,5 @@ Run organize.py through a terminal and provide a address to where the files are 
 
 Ubuntu: /home/User/Desktop/Folder
 
-The program will scan all files within "Folder" and create and relocate each unique file based on
+The program will scan all files within "Folder" and create new folders and relocate each unique file based on
 extension type; the new folders will be located in the same directory.
