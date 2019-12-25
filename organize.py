@@ -14,13 +14,12 @@ def identifyExt(dest, whatFiles):
         ext = os.path.splitext(file)
         if ext[1] in extensions:
             continue
-        # print(ext[1])
         extensions.append(ext[1])
     return extensions
 
 def populate_foldersToMake(ext):
     for ext1 in ext:
-        foldersToMake.append(ext1[1:])                     # Ex. mp3
+        foldersToMake.append(ext1[1:])                          # Ex. mp3
     return None
 
 def populate_filesAndExt(files):
@@ -48,23 +47,24 @@ def OrganizeFiles(addr, files):
 
 def getOnlyFiles(dest):
     listFiles = os.listdir(dest)
+    listFilesTrue = []
     for file in listFiles:
         path = os.path.join(dest, file)
-        if os.path.isfile(path) == False:
-            listFiles.remove(file)
-    return listFiles
+        if os.path.isfile(path):
+            listFilesTrue.append(file)
+    return listFilesTrue
         
 def main():
     dest = input('Address: ')                                   # Get address
     if os.path.isdir(dest) == False:
         print('Invalid Address...')
         exit()
-    allFiles = getOnlyFiles(dest)                                 # Get list of files
+    allFiles = getOnlyFiles(dest)                               # Get list of files
     populate_filesAndExt(allFiles)                              # Populate Dictionary
     ext = identifyExt(dest, allFiles)
-    populate_foldersToMake(ext)                             # Populate list with unique ext
+    populate_foldersToMake(ext)                                 # Populate list with unique ext
     generateFolderDirectories(dest, foldersToMake)              # Make new directories
-    OrganizeFiles(dest, allFiles)
+    OrganizeFiles(dest, allFiles)                               # Organize files
 
 if __name__ == '__main__':
     main()
