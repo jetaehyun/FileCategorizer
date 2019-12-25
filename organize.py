@@ -1,4 +1,6 @@
 import os
+import gui
+import tkinter as tk
 from os import path
 from os import rename
 
@@ -37,7 +39,7 @@ def generateFolderDirectories(dest, ext):
         os.mkdir(path)
     return None
 
-def OrganizeFiles(addr, files):
+def changePaths(addr, files):
     for file in files:
         orgFileAddr = os.path.join(addr, file)                  # Ex. /home/user/documents/someMusic.mp3
         whichFolder = filesAndExt[file]                         # Get extension of file
@@ -53,18 +55,37 @@ def getOnlyFiles(dest):
         if os.path.isfile(path):
             listFilesTrue.append(file)
     return listFilesTrue
-        
-def main():
-    dest = input('Address: ')                                   # Get address
+
+def organizeFiles(addrGUI):
+    addrGUI.delete(0, tk.END)
+    dest = addrGUI.get()
     if os.path.isdir(dest) == False:
-        print('Invalid Address...')
-        exit()
+        gui.message(False)
+        return None
     allFiles = getOnlyFiles(dest)                               # Get list of files
     populate_filesAndExt(allFiles)                              # Populate Dictionary
     ext = identifyExt(dest, allFiles)
     populate_foldersToMake(ext)                                 # Populate list with unique ext
     generateFolderDirectories(dest, foldersToMake)              # Make new directories
-    OrganizeFiles(dest, allFiles)                               # Organize files
+    changePaths(dest, allFiles)   
+    gui.message(True)
+
+def main():
+    # Window
+    field = tk.Tk(className='File Categorizer')
+    field.geometry("500x200")
+    field.resizable(0, 0)
+
+    # User Entry
+    tk.Label(master=field, text='Address').grid(row=0, column=0)
+    user = tk.Entry(field)
+    user.grid(row=0, column=1)
+
+    # Button Command
+    tk.Button(master=field, text='Quit', command=field.quit).grid(row=0, column=5)
+    tk.Button(master=field, text='Enter', command=lambda:organizeFiles(user)).grid(row=0, column=2)
+
+    tk.mainloop()
 
 if __name__ == '__main__':
     main()
