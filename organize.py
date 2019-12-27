@@ -57,8 +57,8 @@ def getOnlyFiles(dest):
     return listFilesTrue
 
 def organizeFiles(addrGUI):
-    addrGUI.delete(0, tk.END)
     dest = addrGUI.get()
+    addrGUI.delete(0, tk.END)
     if os.path.isdir(dest) == False:
         gui.message(False)
         return None
@@ -70,6 +70,8 @@ def organizeFiles(addrGUI):
     changePaths(dest, allFiles)   
     gui.message(True)
 
+# TODO:
+# deal with multiple files of same name overwriting each other
 def main():
     # Window
     field = tk.Tk(className='File Categorizer')
