@@ -1,7 +1,7 @@
 # FileCategorizer
 
 ## **Summary**
-The purpose of this program is all files that are not organized in some directory. Run organize.py through a terminal and provide an address to where the files are located. The program will scan all files within the designated directory and create new folders and relocate each unique file based on extension type; the new folders will be located in the same directory.
+The purpose of this program is to organize all files that are not organized in some directory. Run organize.py through a terminal and provide an address to where the files are located. The program will scan all files within the designated directory and create new folders and relocate each unique file based on extension type; the new folders will be located in the same directory.
 
 ### **Requires tkinter library**
 
