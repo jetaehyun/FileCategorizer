@@ -70,8 +70,6 @@ def organizeFiles(addrGUI):
     changePaths(dest, allFiles)   
     gui.message(True)
 
-# TODO:
-# deal with multiple files of same name overwriting each other
 def main():
     # Window
     field = tk.Tk(className='File Categorizer')
