@@ -14,6 +14,7 @@ Assuming "Folder" has the following:
 **Input:**
 
 *Windows: C:\Documents\Folder*
+
 *Ubuntu: /Home/User/Desktop/Folder*
 
 **Output:**
