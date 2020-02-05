@@ -12,9 +12,11 @@ Assuming "Folder" has the following:
  - picture.jpg
 
 **Input:**
+
 *Ubuntu: /Home/User/Desktop/Folder*
 
 **Output:**
+
 Files will be placed as:
  - */Home/User/Desktop/Folder/mp3_files/music.mp3*
  - */Home/User/Desktop/Folder/jpg_files/picture.jpg*
