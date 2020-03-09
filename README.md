@@ -13,11 +13,7 @@ Assuming "Folder" has the following:
 
 **Input:**
 
-<<<<<<< HEAD
-=======
 *Windows: C:\Documents\Folder*
-
->>>>>>> 817547ab1f848f7f8bc3c861d925f88e86b1a605
 *Ubuntu: /Home/User/Desktop/Folder*
 
 **Output:**
